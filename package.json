@@ -21,9 +21,10 @@
     "nodemon": "nodemon src/main.ts"
   },
   "dependencies": {
+    "@nestjs/cli": "^6.11.3",
     "@nestjs/common": "^5.1.0",
     "@nestjs/core": "^5.1.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.2.2",
     "typescript": "^3.0.1"
