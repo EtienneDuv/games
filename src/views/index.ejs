@@ -1,28 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link rel="stylesheet" href="assets\css\style.css">
-    <title>U+ search game</title>
-</head>
+<% include .\partials\head.ejs %>
 
 <body>
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6" id="content">
-            <h1>Welcome !</h1>
+            <h1><%= message %></h1>
             <h2>Please search for a game you want to buy</h2>
             <form action="/games" method="GET" enctype="application/json">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Game name :</span>
                     </div>
-                    <input required type="text" class="form-control" name="gameName" placeholder="Grand Theft Auto">
+                    <input required type="text" class="form-control" name="name" placeholder="Grand Theft Auto">
                     <div class="input-group-postpend">
                         <button type="submit" class="btn btn-dark">Go</button>
                     </div>

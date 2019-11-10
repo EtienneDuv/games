@@ -1,6 +1,6 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, Render } from '@nestjs/common';
 import { GameService } from './game.service';
-import { GameDTO } from './game.dto'
+import { IRequestedGame } from './interfaces/requestedGame.interface'
 
 @Controller('games')
 export class GameController {
@@ -10,11 +10,15 @@ export class GameController {
   ) {}
 
   @Get('/')
-  async getGameInfo(@Query() query: GameDTO) {
+  @Render('gamesData')
+  async getGamesData(@Query() query: IRequestedGame) {
     try {
-      const gameName = query.gameName
-      const res = await this.gameService.getGame(gameName);
-      return res
+      const gameName = query.name
+      let res = await this.gameService.getGames(gameName);
+      return {
+        response: res,
+        message: `What we found with "${gameName}"`
+      }
     } catch (e) {
       throw Error(e);
     }
