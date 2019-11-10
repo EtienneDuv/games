@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { GameService } from './game.service';
+import { GameDTO } from './game.dto'
 
 @Controller('games')
 export class GameController {
@@ -9,9 +10,11 @@ export class GameController {
   ) {}
 
   @Get('/')
-  async getGameInfo() {
+  async getGameInfo(@Query() query: GameDTO) {
     try {
-      return await this.gameService.getGames();
+      const gameName = query.gameName
+      const res = await this.gameService.getGame(gameName);
+      return res
     } catch (e) {
       throw Error(e);
     }

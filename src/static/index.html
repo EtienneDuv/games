@@ -17,12 +17,15 @@
         <div class="col-6" id="content">
             <h1>Welcome !</h1>
             <h2>Please search for a game you want to buy</h2>
-            <form>
+            <form action="/games" method="GET" enctype="application/json">
                 <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Game name :</span>
-                        </div>
-                    <input type="text" class="form-control" id="gameName" placeholder="Grand Theft Auto">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Game name :</span>
+                    </div>
+                    <input required type="text" class="form-control" name="gameName" placeholder="Grand Theft Auto">
+                    <div class="input-group-postpend">
+                        <button type="submit" class="btn btn-dark">Go</button>
+                    </div>
                 </div>
             </form>
         </div>
