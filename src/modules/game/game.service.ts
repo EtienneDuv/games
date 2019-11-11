@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import Axios, { AxiosResponse } from 'axios';
 import { ICheapSharkResponse } from './interfaces/cheapSharkResponse.interface';
+import { IGame } from './interfaces/game.interface';
 
 @Injectable()
 export class GameService {
@@ -16,5 +17,18 @@ export class GameService {
       return res;
     }
     throw new Error('Error fetching games data');
+  }
+
+  public trimGameData(gamesData: ICheapSharkResponse[]) {
+    let trimmedData: IGame[] = []
+    gamesData.forEach((gameData, i) => {
+      trimmedData[i] = {
+        name: gameData.title,
+        salePrice: parseInt(gameData.normalPrice),
+        cheapestPrice: parseInt(gameData.salePrice),
+        releaseDate: new Date(1000 * gameData.releaseDate).toLocaleDateString(),
+      };
+    })
+    return trimmedData
   }
 }

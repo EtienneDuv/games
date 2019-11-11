@@ -2,33 +2,33 @@
 
 <body>
     <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6" id="content">
+        <div class="col-1"></div>
+        <div class="col-10" id="content">
             <h1><%= message %></h1>
 
             <table class="table">
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th>#</th>
                         <th>Title</th>
-                        <th>Price</th>
-                        <th>Rate</th>
+                        <th>Normal price</th>
+                        <th>Best price</th>
                         <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% response.forEach((game, index) => { %>
+                    <% gamesData.forEach((game, index) => { %>
                     <tr>
                         <th><%= index+1 %></th>
-                        <td><%= game.title %></th>
-                        <td><%= game.title %></th>
-                        <td><%= game.title %></th>
-                        <td><%= game.title %></th>
+                        <td><%= game.name %></th>
+                        <td><%= game.salePrice %>€</th>
+                        <td><%= game.cheapestPrice %>€</th>
+                        <td><%= game.releaseDate %></th>
                     </tr>
                     <% }) %>
                 </tbody>
             </table>
         </div>
-        <div class="col-3"></div>
+        <div class="col-1"></div>
     </div>
 </body>
