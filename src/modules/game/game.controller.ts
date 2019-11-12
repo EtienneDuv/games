@@ -18,7 +18,8 @@ export class GameController {
       const res = await this.gameService.getGames(askedGame);
       const data = this.gameService.trimGameData(res);
       this.callService.logRequest(askedGame)
-        .then(() => { console.log("Logged request")});
+        .then(() => { console.log("Logged request")})
+        .catch((error) => { throw error});
       return {
         gamesData: data,
         message: `What we found with "${askedGame}"`
