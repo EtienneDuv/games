@@ -22,12 +22,18 @@ export class GameService {
   public trimGameData(gamesData: ICheapSharkResponse[]) {
     let trimmedData: IGame[] = []
     gamesData.forEach((gameData, i) => {
-      trimmedData[i] = {
+      let date;
+      if (gameData.releaseDate === 0) {
+        date = "Unknown"
+      } else {
+        date = new Date(1000 * gameData.releaseDate).toLocaleDateString() 
+      }
+      trimmedData.push({
         name: gameData.title,
         salePrice: parseInt(gameData.normalPrice),
         cheapestPrice: parseInt(gameData.salePrice),
-        releaseDate: new Date(1000 * gameData.releaseDate).toLocaleDateString(),
-      };
+        releaseDate: date,
+      });
     })
     return trimmedData
   }
