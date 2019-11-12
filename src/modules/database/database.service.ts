@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Sequelize } from 'sequelize-typescript';
-import { Entities } from '';
+import { Call } from '../call/call.entity';
 
 export const databaseProviders = [
     {
-        provide: 'SequelizeToken',
+        provide: 'U+Db',
         useFactory: async () => {
             const sequelize = new Sequelize({
                 dialect: 'postgres',
@@ -14,7 +14,7 @@ export const databaseProviders = [
                 password: 'xpQcU8ODMeYmFuAk_cT689pHzILL7Fkx',
                 database: 'neovdbxk',
             });
-            sequelize.addModels([Entities]);
+            sequelize.addModels([Call]);
             await sequelize.sync();
             return sequelize;
         },

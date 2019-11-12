@@ -6,7 +6,6 @@ import { DatabaseModule } from './modules/database/database.module';
 
 @Module({
   imports: [GameModule, CallModule, DatabaseModule],
-  controllers: [AppController],
-  providers: [],
+  controllers: [AppController]
 })
 export class AppModule {}
