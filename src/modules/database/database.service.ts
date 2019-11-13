@@ -20,6 +20,3 @@ export const databaseProviders = [
         },
     },
 ];
-
-@Injectable()
-export class DatabaseService {}
