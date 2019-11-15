@@ -4,26 +4,22 @@
     <div class="row">
         <div class="col-1"></div>
         <div class="col-10" id="content">
-            <h1><%= message %></h1>
+            <h1>Logs</h1>
 
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
                         <th>#</th>
-                        <th>Title</th>
-                        <th>Normal price</th>
-                        <th>Best price</th>
                         <th>Date</th>
+                        <th>Game</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% gamesData.forEach((game, index) => { %>
+                    <% logs.forEach((log, index) => { %>
                     <tr>
                         <th><%= index+1 %></th>
-                        <td><%= game.name %></th>
-                        <td><%= game.salePrice %>€</th>
-                        <td><%= game.cheapestPrice %>€ <%if(game.cheapestPrice < game.salePrice){%>👍<%}%></th>
-                        <td><%= game.releaseDate %></th>
+                        <td><%= log.date %></th>
+                        <td><%= log.game %></th>
                     </tr>
                     <% }) %>
                 </tbody>

@@ -8,8 +8,21 @@ export class CallService {
     async logRequest(gameName) {
         const log = new Call({
             called_at: new Date(),
-            asked_game: gameName
+            asked_game: gameName,
         });
         log.save();
+    }
+
+    async getLogs() {
+        let processedLogs = [];
+        const data = await Call.findAll()
+        data.forEach(log => {
+            processedLogs.push({
+                id: log.dataValues.id,
+                date: log.dataValues.called_at,
+                game: log.dataValues.asked_game,
+            });
+        });
+        return processedLogs
     }
 }

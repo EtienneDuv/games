@@ -19,7 +19,7 @@ export class GameController {
       const data = this.gameService.trimGameData(res);
       this.callService.logRequest(askedGame)
         .then(() => { console.log("Logged request")})
-        .catch((error) => { throw error});
+        .catch((error) => { console.log(error)});
       return {
         gamesData: data,
         message: `What we found with "${askedGame}"`

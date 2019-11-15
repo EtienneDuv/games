@@ -13,6 +13,7 @@ export const databaseProviders = [
                 username: 'neovdbxk',
                 password: 'xpQcU8ODMeYmFuAk_cT689pHzILL7Fkx',
                 database: 'neovdbxk',
+                logging: false,
             });
             sequelize.addModels([Call]);
             await sequelize.sync();
