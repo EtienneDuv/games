@@ -8,7 +8,13 @@ import { AuthService } from './modules/auth/auth.service';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
-  imports: [GameModule, CallModule, DatabaseModule, AuthModule, UserModule],
+  imports: [
+    GameModule, 
+    CallModule, 
+    DatabaseModule, 
+    AuthModule, 
+    UserModule,
+  ],
   controllers: [AppController],
   providers: [AuthService]
 })

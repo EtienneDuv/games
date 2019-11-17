@@ -1,4 +1,5 @@
-import { Controller, Get, Query, Render } from '@nestjs/common';
+import { Controller, Get, Render, UseGuards } from '@nestjs/common'
+import { AuthGuard } from '@nestjs/passport'
 import { CallService } from '../call/call.service'
 
 @Controller('calls')
@@ -8,6 +9,8 @@ export class CallController {
         private readonly callService: CallService,
     ) { }
 
+
+    @UseGuards(AuthGuard('local'))
     @Get('/')
     @Render('logs')
     async getLogsData() {
