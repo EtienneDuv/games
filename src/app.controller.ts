@@ -1,6 +1,6 @@
-import { Controller, Get, Post, Render, Request, UseGuards, } from '@nestjs/common';
+import { Controller, Get, Post, Render, Request, UseGuards, Res, Req } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { AuthService } from './modules/auth/auth.service'
+import { AuthService } from './modules/auth/auth.service';
 
 @Controller()
 export class AppController {
@@ -11,7 +11,8 @@ export class AppController {
 
     @Get()
     @Render('index')
-    default() {
+    default(@Req() req) {
+        // console.log(req.headers)
         const messages = [
             'Welcome !', 
             'Hello there, what are we looking for today ?', 
@@ -26,11 +27,16 @@ export class AppController {
     }
 
     @UseGuards(AuthGuard('local'))
-    @Post('auth/login')
-    async login(@Request() req) {
-        console.log("Login route")
-        return this.authService.login(req.user);
+    @Post('/login')
+    async login(@Request() req, @Res() res) {
+        // get form data to login user
+        await this.authService.login(req.user, res);
+        return
     }
+
+    @Get('/login')
+    @Render('login')
+    async loginPage() {}
 
     @UseGuards(AuthGuard('jwt'))
     @Get('profile')

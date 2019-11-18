@@ -1,30 +1,39 @@
-# U+Game
+# My work
 
-Hello there,
+I tried as much as possible to respect NestJs' way of doing things, following documentation, using guards, modules, services, providers...
 
-so you want to be developer in U+? We prepared a little challenge for you. No bullshit, just a real world scenario, you could face as dev here.
+I really liked the exercice, it allowed me to discover NestJs and see further functionnalitites of Express and Node. It was also the first time I implemented a Jwt authentification, which was pretty tricky but thrilling 🙂
 
+HTML is generated using EJS + SASS.
+Used Bootstrap, Sequelize ORM, Passport (for authentification and guards), cookie-parser to stock jwt token.
 
-## Description
-We love to play our Playstation in office, one of the game here is GTA V. But we would like to buy older games from this series. And of course as cheap as possible.
-You will be Backend developer providing API endpoint for your colleague on frond-end checking if game is cheap enough to buy.
+Unfortunately, I have not had time to create tests.
 
-Your tech stack will be Nest.js which is wrapper around Node.js + Express taking advantage of Typescript. If you don't know it, check it out, its really easy to start, check `https://docs.nestjs.com/`.
-
-## Your task
-You will work with API `https://www.cheapshark.com/api/`. Lucky for you somebody just started on this project, so continue, where he left. Fork this repo and:
-- ✔ Expand app logic to fetch the cheapest price ever for game (spoiler alert - you need to call `https://www.cheapshark.com/api/documentation.html#deals`).
-- ✔ Return just data in `IGame` interface to endpoint GET `/games`.
-- ✔ When endpoint GET `/games` is called, you have to save this event to database (of your choice). You will save just when endpoint was called. In the end you will have in table two columns `id` and `called_at` of type DATETIME.
-- Make endpoint GET `/calls` and return data from database you created. Return only calls made on Mondays.
-- Endpoint GET `/calls` has to be private, make it so, it's up to you what method will you choose.
-- Tests are up to you, if you provide them, you will get in front of other candidates.
-
-## Installation and run
-
-```bash
-$ npm install
+## Organisation
 ```
+.
+└── /
+    ├── /games/
+    ├── /login
+    ├── /calls (jwt 🔒)
+    └── /profile (jwt 🔒)
+```
+
+## Use
+- from `/`, type a game name to find its price
+- if you want to see logs of searched games, first log at `/login` with admin/admin or root/root, then you can access `/calls` (and `/profile`)
+
+## Test JWT connection
+
+> Windows
+```powershell
+> curl --header "Content-Type:application/json" localhost:3000/auth/login --request POST --data "{\"username\":\"root\", \"password\":\"root\"}"
+```
+> Linux
 ```bash
-$ npm start
+> curl --header "Content-Type:application/json" localhost:3000/auth/login --request POST --data '{"username":"root", "password":"root"}'
+```
+
+```
+> curl -I localhost:3000/calls -H "Authorization:Bearer [jwt_token]"
 ```

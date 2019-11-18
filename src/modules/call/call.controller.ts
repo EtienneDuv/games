@@ -1,4 +1,4 @@
-import { Controller, Get, Render, UseGuards } from '@nestjs/common'
+import { Controller, Get, Render, UseGuards, Res } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
 import { CallService } from '../call/call.service'
 
@@ -10,17 +10,19 @@ export class CallController {
     ) { }
 
 
-    @UseGuards(AuthGuard('local'))
+    @UseGuards(AuthGuard('jwt'))
     @Get('/')
     @Render('logs')
-    async getLogsData() {
+    async getLogsData(@Res() res) {
         try {
+            console.log()
             const data = await this.callService.getLogs()
             return {
                 logs: data,
             }
         } catch (e) {
             console.log(e)
+            res.redirect('/login')
         }
     }
 }

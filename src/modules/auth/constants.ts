@@ -1,6 +1,6 @@
 export const jwtConstants = {
-    secret: 'secretKey',
+    secret: 'mySuperSecretKey',
 };
 
-// In this context, without fixed server, it is easier this way
-// in true context, use secrets vault, environment variable, or configuration service
+// In this context, without fix server, it is easier this way
+// in true context, use secrets vault, .env or configuration service

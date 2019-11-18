@@ -1,0 +1,20 @@
+<% include .\partials\head.ejs %>
+
+<body>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10" id="content">
+            <form method="POST" enctype="application/json" datatype="json">
+                <div class="form-group">
+                    <label for="usernameInput">Login</label>
+                    <input type="text" class="form-control" id="usernameInput" placeholder="admin" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="passInput">Password</label>
+                    <input type="password" class="form-control" id="passInput" placeholder="admin" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>

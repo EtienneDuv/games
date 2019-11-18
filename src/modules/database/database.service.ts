@@ -1,4 +1,3 @@
-import { Injectable } from '@nestjs/common';
 import { Sequelize } from 'sequelize-typescript';
 import { Call } from '../call/call.entity';
 
@@ -6,6 +5,7 @@ export const databaseProviders = [
     {
         provide: 'U+Db',
         useFactory: async () => {
+            // Connection data should be in ENV_VARIABLES
             const sequelize = new Sequelize({
                 dialect: 'postgres',
                 host: 'manny.db.elephantsql.com',
