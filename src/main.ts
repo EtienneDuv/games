@@ -11,9 +11,10 @@ async function bootstrap() {
   app.setViewEngine('ejs');
   app.use(cookieParser())
   app.use((req, res, next) => {
-    const token = req.cookies.jwt
-    req.headers["authorization"] = `Bearer ${token}`
-    console.log(req.headers["Authorization"])
+    if (req.cookies.jwt) {
+      const token = req.cookies.jwt
+      req.headers["authorization"] = `Bearer ${token}`
+    }
     return next()
   })
   await app.listen(3000, () => {
