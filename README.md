@@ -1,8 +1,9 @@
 # My work
 
-I tried as much as possible to respect NestJs' way of doing things, following documentation, using guards, modules, services, providers...
+I did my best to respect NestJs' way of doing things, following documentation, using guards, modules, services, providers...
 
 I really liked the exercice, it allowed me to discover NestJs and see further functionnalitites of Express and Node. It was also the first time I implemented a Jwt authentification, which was pretty tricky but thrilling 🙂
+
 I had a lot of problems with Passport jwt implementation though...
 
 HTML is generated using EJS + SASS.
@@ -14,10 +15,19 @@ Unfortunately, I have not had time to create tests.
 ```
 .
 └── /
-    ├── /games/
+    ├── /games
     ├── /login
     ├── /calls (jwt 🔒)
     └── /profile (jwt 🔒)
+```
+
+## Installation
+
+```bash
+$ npm install
+```
+```bash
+$ npm start
 ```
 
 ## Use
