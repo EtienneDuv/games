@@ -17,11 +17,13 @@ export class CallService {
         let processedLogs = [];
         const data = await Call.findAll()
         data.forEach(log => {
-            processedLogs.push({
-                id: log.dataValues.id,
-                date: log.dataValues.called_at,
-                game: log.dataValues.asked_game,
-            });
+            if (log.dataValues.called_at.getDay() === 1 ) { //getDay 0 is Sunday
+                processedLogs.push({
+                    id: log.dataValues.id,
+                    date: log.dataValues.called_at,
+                    game: log.dataValues.asked_game,
+                });
+            }
         });
         return processedLogs
     }
