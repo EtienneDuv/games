@@ -12,7 +12,6 @@ export class AppController {
     @Get()
     @Render('index')
     default(@Req() req) {
-        // console.log(req.headers)
         const messages = [
             'Welcome !', 
             'Hello there, what are we looking for today ?', 
@@ -31,7 +30,7 @@ export class AppController {
     async login(@Request() req, @Res() res) {
         // get form data to login user
         await this.authService.login(req.user, res);
-        return
+        return res.redirect('/')
     }
 
     @Get('/login')

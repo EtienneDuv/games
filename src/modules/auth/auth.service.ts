@@ -24,7 +24,7 @@ export class AuthService {
     async login(user: any, @Res() res: any) {
         const payload = { username: user.username, sub: user.userId }
         const access_token = this.jwtService.sign(payload)
+        console.log(access_token)
         res.cookie('jwt', access_token)
-        res.redirect('/')
     }
 }
