@@ -9,4 +9,8 @@
 #content h2 {
   font-size: 1.4em;
 }
+
+#content #redirectButtons {
+  padding-top: 1em;
+}
 /*# sourceMappingURL=style.css.map */
