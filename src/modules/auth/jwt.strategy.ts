@@ -5,6 +5,7 @@ import { jwtConstants } from './constants';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
+    // Verify jwt token from authorization header
     constructor() {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
@@ -15,7 +16,6 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
 
     async validate(payload: any) {
         console.log(payload)
-        // return { userId: payload.sub, username: payload.username };
-        return { userId: 1, username: "root" };
+        return { userId: payload.sub, username: payload.username };
     }
 }

@@ -11,6 +11,7 @@ export class GameService {
     return gamesList.data;
   }
 
+  /** Get data from CheapShark API */
   private async fetchGames(gameName: string): Promise<AxiosResponse> {
     const res = await Axios.get(`http://www.cheapshark.com/api/1.0/deals?storeID=1&desc=0&title=${gameName}&pageSize=20`);
     if (res.status === 200) {
@@ -19,6 +20,7 @@ export class GameService {
     throw new Error('Error fetching games data');
   }
 
+  /** Format data to IGame interface format */
   public trimGameData(gamesData: ICheapSharkResponse[]) {
     let trimmedData: IGame[] = []
     gamesData.forEach((gameData, i) => {

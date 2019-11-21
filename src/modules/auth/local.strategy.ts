@@ -9,6 +9,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
         super();
     }
 
+    // Verify if username/password given in form are good
     async validate(username: string, password: string): Promise<any> {
         const user = await this.authService.validateUser(username, password);
         if (!user) {

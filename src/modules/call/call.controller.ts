@@ -15,7 +15,6 @@ export class CallController {
     @Render('logs')
     async getLogsData(@Res() res) {
         try {
-            console.log()
             const data = await this.callService.getLogs()
             return {
                 logs: data,

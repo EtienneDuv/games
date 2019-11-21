@@ -5,6 +5,7 @@ import { Call } from './call.entity'
 export class CallService {
     constructor() { }
 
+    /** Save in database the date and asked game */
     async logRequest(gameName) {
         const log = new Call({
             called_at: new Date(),
@@ -13,6 +14,7 @@ export class CallService {
         log.save();
     }
 
+    /** Gets date and asked game from the database */
     async getLogs() {
         let processedLogs = [];
         const data = await Call.findAll()
